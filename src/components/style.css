@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+.video-con{
+    display: flex;
+    flex-direction: row;
+}
+.video-con .video-detail{
+    width: calc(100% - 300px);
+    padding: 10px 10px 0 0;
+}
+.video-list{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+.video-list .video-item{
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.video-list .video-item > img{
+    display: block;
+    float: left;
+    margin: 0 1em 0 0;
+    width: 100px;
+}
+.video-list .video-item h6{
+    font-size: 14px;
+    font-weight: 500;
+}
+.video-list .video-item h6 small{
+    font-size: 13px;
+    display: block;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 5px 0 0 0;
+}
