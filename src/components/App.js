@@ -12,6 +12,7 @@ class App extends React.Component {
 
   };
 
+
   onTermSubmit = async (term) => {
     const response = await youtube.get('/search', {
       params: {
@@ -19,8 +20,16 @@ class App extends React.Component {
       }
     });
 
-    this.setState({ videos: response.data.items });
+    this.setState({ 
+      videos: response.data.items,
+      selectedVideo: response.data.items[0]
+     });
+
     //console.log(response.data.items);
+  }
+
+  componentDidMount(){
+    this.onTermSubmit('telugu video songs');
   }
 
   onVideoSelect = (video) => {
@@ -30,13 +39,19 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="container">
-        <SearchBar onFormSubmit={this.onTermSubmit}></SearchBar>
-        <div className="video-con">
-        <VideoDetail video={this.state.selectedVideo}></VideoDetail>
-        <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}></VideoList>
+      <div>
+      <div className="search-bar">
+        <div className="container">
+          <SearchBar onFormSubmit={this.onTermSubmit}></SearchBar>
         </div>
-        
+      </div>
+      <div className="container">
+        <div className="video-con row">
+        <div className="col-12 col-lg-8 col-md-6"><VideoDetail video={this.state.selectedVideo}></VideoDetail></div>
+        <div className="col-12 col-lg-4 col-md-6"><VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}>
+          </VideoList></div>
+        </div>
+      </div>
       </div>
     )
   }
